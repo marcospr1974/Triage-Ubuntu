@@ -3,12 +3,14 @@
 #####################################################
 #
 # Nombre : 04-User-Profile.sh
-# Version: 1.0
+# Version: 1.1
 # Autor  : Marcos Pablo Russo
-# Fecha  : 14/09/2021
+# Fecha  : 26/11/2021
 #
-# Descripcion: Live Response Collection
-#              Este obtenemos información de los usuarios.
+# Descripcion: 
+#            - 1.1 Se agrega el comando lslogins
+#            - 1.0 Live Response Collection
+#                  Este obtenemos información de los usuarios.
 #
 #####################################################
 
@@ -28,6 +30,21 @@ basename ${0}
 # Mis conexiones
 printf "${color_celeste}%-66s${sin_color}" "    - Información de los logueos (w)"
 w >> $result/04-User-Profile/Logged_Users.txt
+printf "${color_verde}%10s${sin_color}\n" "  [OK]"
+
+# Logins
+printf "${color_celeste}%-66s${sin_color}" "    - Información de los logins (lslogins -u)"
+lslogins -u >> $result/04-User-Profile/Logins.txt
+printf "${color_verde}%10s${sin_color}\n" "  [OK]"
+
+# Logins Fallados
+printf "${color_celeste}%-66s${sin_color}" "    - Información de las sessiones falladas (lslogins -f)"
+lslogins -f >> $result/04-User-Profile/Logins-fail.txt
+printf "${color_verde}%10s${sin_color}\n" "  [OK]"
+
+# Logins cuenta de los usuarios
+printf "${color_celeste}%-66s${sin_color}" "    - Información de las cuentas de los usuarios (lslogins -a)"
+lslogins -a >> $result/04-User-Profile/Logins-account.txt
 printf "${color_verde}%10s${sin_color}\n" "  [OK]"
 
 # Mis conexiones
